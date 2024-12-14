@@ -1,5 +1,17 @@
+# ====================================================================================================
+# 📥 YouTube MP3 Downloader
+# Proyek ini adalah aplikasi sederhana untuk mengunduh audio dari video YouTube dalam format **MP3**.
+# 🚀 Fitur Utama
+# - **Mengunduh audio** dari video YouTube.
+# - **Konversi otomatis** file audio dari `.webm` ke `.mp3` menggunakan FFmpeg.
+# - **Tampilan grafis sederhana** berbasis tkinter.
+
+# made by Ebren Tinambunan
+# [github.com/ebrentinambunan]
+# ====================================================================================================
+
 from __future__ import unicode_literals
-import yt_dlp as youtube_dl  # Ganti youtube_dl dengan yt_dlp
+import yt_dlp as youtube_dl 
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter import ttk
@@ -15,7 +27,6 @@ def download_audio():
     if not folder:
         return
 
-    # Konfigurasi yt_dlp
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': f"{folder}/%(title)s.%(ext)s",
@@ -57,34 +68,26 @@ def on_progress(d):
 def update_status(message):
     status_label.config(text=message)
 
-# GUI Setup
 root = tk.Tk()
 root.title("YouTube MP3 Downloader")
 root.geometry("450x300")
 
-# Label untuk URL Input
 url_label = tk.Label(root, text="Enter YouTube URL:")
 url_label.pack(pady=5)
 
-# Input URL
 url_entry = tk.Entry(root, width=50)
 url_entry.pack(pady=5)
 
-# Tombol Download
 download_button = tk.Button(root, text="Download MP3", command=download_audio)
 download_button.pack(pady=10)
 
-# Progress Bar
 progress_bar = ttk.Progressbar(root, length=300, mode='determinate')
 progress_bar.pack(pady=10)
 
-# Label Status
 status_label = tk.Label(root, text="", fg="blue")
 status_label.pack(pady=5)
 
-# Footer
-footer_label = tk.Label(root, text="Contact me on Discord: https://discord.gg/BgjwgWx", fg="gray", font=("Arial", 8))
+footer_label = tk.Label(root, text="Support me on Github: https://github.com/ebrentinambunan", fg="gray", font=("Arial", 8))
 footer_label.pack(side=tk.BOTTOM, pady=10)
 
-# Run the GUI
 root.mainloop()

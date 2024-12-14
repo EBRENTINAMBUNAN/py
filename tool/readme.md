@@ -1,27 +1,3 @@
-
----
-
-## 📥 YouTube MP3 Downloader
-
-Proyek ini adalah aplikasi sederhana untuk mengunduh audio dari video YouTube dalam format **MP3**. Aplikasi ini menggunakan **yt_dlp** (pengganti youtube-dl) dan **FFmpeg** dari [BtbN FFmpeg Builds](https://github.com/BtbN/FFmpeg-Builds/releases) untuk proses konversi.
-
----
-
-### 🚀 Fitur Utama
-- **Mengunduh audio** dari video YouTube.
-- **Konversi otomatis** file audio dari `.webm` ke `.mp3` menggunakan FFmpeg.
-- **Tampilan grafis sederhana** berbasis tkinter.
-
----
-
-### 🛠️ Persyaratan
-Pastikan Anda sudah menginstal:
-1. **Python** (versi 3.8 atau lebih baru).
-2. **yt_dlp** (library Python untuk mengunduh video/audio YouTube).
-3. **FFmpeg** (dari BtbN FFmpeg Builds).
-
----
-
 ### 📝 Instalasi
 
 1. **Install Dependensi**:
