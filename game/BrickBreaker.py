@@ -1,7 +1,22 @@
+# ===================================================================================
+# 🎮 Brick Breaker Game
+# Program ini adalah implementasi sederhana dari 
+# permainan Brick Breaker menggunakan Python dan Tkinter sebagai antarmuka grafis.
+
+# 🚀 Fitur Utama
+# - Pemain mengontrol paddle menggunakan tombol panah kiri dan kanan.
+# - Bola bergerak secara otomatis dan memantul dari paddle, dinding, dan bricks.
+# - Bricks akan hancur ketika bola mengenainya.
+# - Permainan berakhir ketika semua bricks dihancurkan (menang) atau bola jatuh melewati paddle (kalah).
+# - Tampilan "Game Over" atau "You Win" akan muncul di layar sesuai hasil permainan.
+
+# made by Ebren Tinambunan
+# [github.com/ebrentinambunan]
+# ===================================================================================
+
 import tkinter as tk
 import random
 
-# Konstanta untuk ukuran kanvas dan kontrol permainan
 WIDTH = 600
 HEIGHT = 400
 PADDLE_WIDTH = 100
@@ -69,25 +84,25 @@ class BrickBreakerGame:
         self.canvas.move(self.ball, self.ball_dx, self.ball_dy)
         ball_coords = self.canvas.coords(self.ball)
         
-        if ball_coords[0] <= 0 or ball_coords[2] >= WIDTH:  # Tabrak sisi kiri/kanan
+        if ball_coords[0] <= 0 or ball_coords[2] >= WIDTH:  
             self.ball_dx *= -1
         
-        if ball_coords[1] <= 0:  # Tabrak sisi atas
+        if ball_coords[1] <= 0:  
             self.ball_dy *= -1
         
-        if ball_coords[3] >= HEIGHT:  # Tabrak sisi bawah (Game Over)
+        if ball_coords[3] >= HEIGHT:  
             self.game_over()
             return
         
-        if self.check_collision(self.paddle, ball_coords):  # Tabrak paddle
+        if self.check_collision(self.paddle, ball_coords):  
             self.ball_dy *= -1
         
         for brick in self.bricks:
-            if self.check_collision(brick, ball_coords):  # Tabrak bata
+            if self.check_collision(brick, ball_coords):  
                 self.ball_dy *= -1
                 self.canvas.delete(brick)
                 self.bricks.remove(brick)
-                if not self.bricks:  # Semua bata dihancurkan (Menang)
+                if not self.bricks:  
                     self.win_game()
                 break
         

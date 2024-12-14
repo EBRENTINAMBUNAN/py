@@ -1,7 +1,22 @@
+# ===================================================================================
+# 🐍 Permainan Ular (Snake Game)
+# Proyek ini adalah implementasi sederhana dari 
+# permainan Snake klasik menggunakan Python dan Tkinter sebagai antarmuka grafis.
+
+# 🚀 Fitur Utama
+# Ular dapat bergerak ke atas, bawah, kiri, atau kanan.
+# Pemain dapat mengontrol ular menggunakan tombol panah keyboard.
+# Ular bertambah panjang setiap kali memakan makanan.
+# Permainan berakhir jika ular menabrak dinding atau tubuhnya sendiri.
+# Skor akan ditampilkan di layar setelah permainan selesai.
+
+# made by Ebren Tinambunan
+# [github.com/ebrentinambunan]
+# ======================================================================================
+
 import tkinter as tk
 import random
 
-# Konstanta untuk ukuran kanvas dan kontrol permainan
 WIDTH = 600
 HEIGHT = 400
 GRID_SIZE = 20
@@ -14,18 +29,18 @@ class SnakeGame:
         self.canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT, bg="black")
         self.canvas.pack()
         
-        self.snake = [(100, 100), (80, 100), (60, 100)]  # Posisi awal ular
-        self.food_position = self.generate_food_position()  # Posisi awal makanan
-        self.direction = 'Right'  # Arah awal ular
+        self.snake = [(100, 100), (80, 100), (60, 100)]  
+        self.food_position = self.generate_food_position()  
+        self.direction = 'Right'  
         
-        self.running = True  # Untuk menghentikan permainan
-        self.score = 0  # Skor awal
+        self.running = True  
+        self.score = 0  
         
-        self.create_objects()  # Membuat ular dan makanan di kanvas
+        self.create_objects()  
         
-        self.root.bind('<KeyPress>', self.change_direction)  # Mengatur kontrol keyboard
+        self.root.bind('<KeyPress>', self.change_direction) 
         
-        self.move_snake()  # Memulai pergerakan ular
+        self.move_snake()  
     
     def create_objects(self):
         """Membuat objek ular dan makanan di kanvas."""
@@ -59,19 +74,18 @@ class SnakeGame:
         elif self.direction == 'Right':
             new_head = (head_x + GRID_SIZE, head_y)
         
-        self.snake.insert(0, new_head)  # Tambahkan kepala baru ke depan ular
+        self.snake.insert(0, new_head)  
         
-        if new_head == self.food_position:  # Jika ular memakan makanan
+        if new_head == self.food_position:  
             self.score += 1
             self.food_position = self.generate_food_position()
             self.canvas.delete(self.food)
             fx, fy = self.food_position
             self.food = self.canvas.create_oval(fx, fy, fx + GRID_SIZE, fy + GRID_SIZE, fill="red", outline="")
         else:
-            tail = self.snake.pop()  # Hapus bagian ekor ular
+            tail = self.snake.pop()  
             self.canvas.delete(self.snake_parts.pop())
         
-        # Periksa tabrakan dengan dinding atau tubuhnya sendiri
         if (new_head[0] < 0 or new_head[1] < 0 or 
             new_head[0] >= WIDTH or new_head[1] >= HEIGHT or 
             new_head in self.snake[1:]):
@@ -81,7 +95,7 @@ class SnakeGame:
         part = self.canvas.create_rectangle(new_head[0], new_head[1], new_head[0] + GRID_SIZE, new_head[1] + GRID_SIZE, fill="green", outline="")
         self.snake_parts.insert(0, part)
         
-        self.root.after(100, self.move_snake)  # Memanggil fungsi ini secara berulang
+        self.root.after(100, self.move_snake) 
     
     def change_direction(self, event):
         """Mengubah arah pergerakan ular berdasarkan input dari keyboard."""

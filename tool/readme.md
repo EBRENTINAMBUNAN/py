@@ -1,4 +1,4 @@
-### 📝 Instalasi
+### 📝 mulai
 
 1. **Install Dependensi**:
    Instal `yt_dlp` dengan perintah berikut:
@@ -42,11 +42,6 @@
 
 ### 🤝 Kontribusi
 Kontribusi sangat diterima! Lakukan fork, buat cabang baru, dan ajukan **Pull Request**.
-
----
-
-### 📜 Lisensi
-Proyek ini dilisensikan di bawah **MIT License**.
 
 ---
 
